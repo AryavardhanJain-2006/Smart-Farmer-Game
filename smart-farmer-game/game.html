@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f1f8e9;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .game-box {
+            background: white;
+            max-width: 420px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            font-size: 16px;
+            background: #66bb6a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>🌱 Answer the Question</h2>
+
+<div class="game-box">
+    <h3 id="question"></h3>
+
+    <button onclick="checkAnswer(0)" id="o0"></button>
+    <button onclick="checkAnswer(1)" id="o1"></button>
+    <button onclick="checkAnswer(2)" id="o2"></button>
+
+    <div id="feedback"></div>
+</div>
+
+<script>
+    const questions = [
+        {
+            q: "Best time to water crops?",
+            o: ["Afternoon", "Morning", "Night"],
+            c: 1
+        },
+        {
+            q: "Which irrigation saves water?",
+            o: ["Flood", "Drip", "Over watering"],
+            c: 1
+        },
+        {
+            q: "Which is renewable energy?",
+            o: ["Diesel", "Coal", "Solar"],
+            c: 2
+        }
+    ];
+
+    let index = 0;
+    let score = 0;
+
+    function loadQ() {
+        document.getElementById("question").innerText = questions[index].q;
+        document.getElementById("o0").innerText = questions[index].o[0];
+        document.getElementById("o1").innerText = questions[index].o[1];
+        document.getElementById("o2").innerText = questions[index].o[2];
+        document.getElementById("feedback").innerText = "";
+    }
+
+    function checkAnswer(ans) {
+        if (ans === questions[index].c) {
+            score += 10;
+            document.getElementById("feedback").innerText = "✅ Correct";
+        } else {
+            document.getElementById("feedback").innerText = "❌ Wrong";
+        }
+
+        index++;
+
+        if (index < questions.length) {
+            setTimeout(loadQ, 1000);
+        } else {
+            localStorage.setItem("farmerScore", score);
+            setTimeout(() => {
+                window.location.href = "result.html";
+            }, 1000);
+        }
+    }
+
+    loadQ();
+</script>
+
+</body>
+</html>

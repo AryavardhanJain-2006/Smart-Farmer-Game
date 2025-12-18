@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #e8f5e9;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>🎉 Game Completed</h1>
+    <h2 id="score"></h2>
+    <p>Thank you for learning smart farming 🌾</p>
+    <a href="index.html">Play Again</a>
+</div>
+
+<script>
+    const finalScore = localStorage.getItem("farmerScore");
+    document.getElementById("score").innerText =
+        "Your Score: " + finalScore;
+</script>
+
+</body>
+</html>
