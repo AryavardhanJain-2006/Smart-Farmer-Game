@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Smart Farmer Game</title>
+    <title>Result</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -11,8 +11,6 @@
             text-align: center;
             padding: 40px;
         }
-
-        h1 { color: #1b5e20; }
 
         .box {
             background: white;
@@ -26,12 +24,11 @@
         a {
             display: inline-block;
             margin-top: 20px;
-            padding: 12px 25px;
+            padding: 10px 20px;
             background: #4caf50;
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 18px;
         }
     </style>
 </head>
@@ -39,13 +36,17 @@
 <body>
 
 <div class="box">
-    <h1>🌾 Smart Farmer Challenge</h1>
-    <p>
-        Learn smart farming, water saving, and clean energy  
-        through a simple interactive game.
-    </p>
-    <a href="game.html">Start Game</a>
+    <h1>🎉 Game Completed</h1>
+    <h2 id="score"></h2>
+    <p>Thank you for learning smart farming 🌾</p>
+    <a href="index.html">Play Again</a>
 </div>
+
+<script>
+    const finalScore = localStorage.getItem("farmerScore");
+    document.getElementById("score").innerText =
+        "Your Score: " + finalScore;
+</script>
 
 </body>
 </html>
